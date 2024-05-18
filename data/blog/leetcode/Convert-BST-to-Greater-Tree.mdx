@@ -1,0 +1,34 @@
+---
+title: Convert BST to Greater Tree
+date: '2024-05-18'
+tags: ['Leetcode', 'Tree', 'Binary Search Tree', 'Binary Tree']
+draft: false
+---
+
+# Question
+https://leetcode.com/problems/convert-bst-to-greater-tree/description/
+
+## Solution
+* Get the sum of right child
+* update current node value to sum + current node val
+* update the value of left child
+
+```typescript
+function convertBST(root: TreeNode | null): TreeNode | null {
+    const total = {sum: 0};
+    helper(root, total);
+    return root;
+};
+
+type Total = {
+    sum: number
+}
+
+const helper = (node: TreeNode | null, total: Total) => {
+    if (!node) return;
+    helper(node.right, total);
+    total.sum += node.val;
+    node.val = total.sum;
+    helper(node.left, total);
+}
+```

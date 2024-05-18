@@ -1,0 +1,31 @@
+---
+title: Convert Sorted Array to Binary Search Tree
+date: '2024-05-18'
+tags: ['Leetcode', 'Tree', 'Binary Search Tree', 'Binary Tree']
+draft: false
+summary: 'Tranform an ascending array to  a height-balanced binary search tree.'
+---
+
+# Question
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
+
+# Solution
+* Given an ascending array (BST in-order traverse)
+* calculate the mid point of the array, use the value of midpoint as the root element
+* Use the left sub array to build the left child recusively  
+* Use the right sub array to build the right child recusively
+
+```typescript
+function sortedArrayToBST(nums: number[]): TreeNode | null {
+    return helper(nums, 0, nums.length - 1);
+};
+
+const helper = (nums: number[], left: number, right: number): TreeNode | null => {
+    if (left > right) return null;
+    const mid = Math.floor((left + right) / 2);
+    const node = new TreeNode(nums[mid]);
+    node.left = helper(nums, left, mid - 1);
+    node.right = helper(nums, mid + 1, right);
+    return node;
+}
+```

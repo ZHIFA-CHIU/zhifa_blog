@@ -1,0 +1,32 @@
+---
+title: Trim a Binary Search Tree
+date: '2024-05-18'
+tags: ['Leetcode', 'Tree', 'Binary Search Tree', 'Binary Tree']
+draft: false
+summary: 'Trim BST'
+---
+
+# Question
+https://leetcode.com/problems/trim-a-binary-search-tree/description/
+
+# Solution
+Trim:
+    * if not node, return
+    * if node is in range [low, high], keep this node, and trim the left and right children
+    * if node is less than low, return the trimmed right child
+    * if node is larger than high, return the trimmed left child
+
+```typescript
+function trimBST(root: TreeNode | null, low: number, high: number): TreeNode | null {
+    if (!root) return root;
+    if (root.val >= low && root.val <= high) {
+        root.left = trimBST(root.left, low, high);
+        root.right = trimBST(root.right, low, high);
+        return root;
+    } else if (root.val < low) {
+        return trimBST(root.right, low, high);
+    } else {
+        return trimBST(root.left, low, high);
+    }
+};
+```

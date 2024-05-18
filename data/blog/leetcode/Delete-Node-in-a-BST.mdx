@@ -1,0 +1,52 @@
+---
+title: Delete Node in a BST
+date: '2024-05-18'
+tags: ['Leetcode', 'Tree', 'Binary Search Tree', 'Binary Tree']
+draft: false
+summary: 'How to remove a node from BST'
+---
+
+# Question
+https://leetcode.com/problems/delete-node-in-a-bst/description/
+
+# Solution
+BST Deleteion:
+    * case 1:
+        * node is leaf, remove the node
+    * case 2: 
+        * node only has left child or right child, remove the node and replace it with the child
+    * case 3:
+        * node has both left and right children, find smallest value of right subtree
+        * replace the value of to be deleted node with the value of the smallest value of right subtree
+        * remove the smallest value of right subtree node from the right subtree
+
+```typescript
+function deleteNode(root: TreeNode | null, key: number): TreeNode | null {
+    if (!root) return root;
+    if (root.val < key) {
+        root.right = deleteNode(root.right, key);
+        return root;
+    } else if (root.val > key) {
+        root.left = deleteNode(root.left, key);
+        return root;
+    } else {
+        if (!root.left && !root.right) {
+            return null;
+        } else if (root.left && root.right) {
+            const smallestNodeOfRightSubTree = smallestOfRightSubTree(root.right);
+            root.val = smallestNodeOfRightSubTree.val;
+            root.right = deleteNode(root.right, root.val);
+            return root;
+        } else if (root.left) {
+            return root.left
+        } else {
+            return root.right;
+        }
+    }
+}; 
+
+const smallestOfRightSubTree = (node: TreeNode): TreeNode => {
+    if (!node.left) return node;
+    return smallestOfRightSubTree(node.left);
+}
+``` 
