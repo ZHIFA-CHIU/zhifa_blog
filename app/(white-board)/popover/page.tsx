@@ -1,0 +1,50 @@
+'use client'
+
+import { Button, Card, CardBody } from '@nextui-org/react'
+import { MouseEvent, MouseEventHandler, useEffect, useState } from 'react'
+
+const PopoverContent = () => (
+  <Card>
+    <CardBody className="text-xs">
+      <p className="font-semibold">Popover Content</p>
+      <p>This is popover content</p>
+    </CardBody>
+  </Card>
+)
+
+const Popover = () => {
+  return (
+    <div className="grid grid-cols-4 place-items-center border border-gray-300/20 p-8">
+      <div className="group/top relative">
+        <Button size="sm">Top</Button>
+
+        <div className="absolute -left-9 -top-20 hidden w-32 group-hover/top:block">
+          <PopoverContent />
+        </div>
+      </div>
+      <div className="group/bottom relative">
+        <Button size="sm">Bottom</Button>
+
+        <div className="absolute -bottom-20 -right-9 hidden w-32 group-hover/bottom:block">
+          <PopoverContent />
+        </div>
+      </div>
+      <div className="group/left relative">
+        <Button size="sm">Left</Button>
+
+        <div className="absolute -left-36 -top-5 hidden w-32 group-hover/left:block">
+          <PopoverContent />
+        </div>
+      </div>
+      <div className="group/right relative">
+        <Button size="sm">Right</Button>
+
+        <div className="absolute -right-36 -top-5 hidden w-32 lg:group-hover/right:block">
+          <PopoverContent />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Popover
