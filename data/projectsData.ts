@@ -22,6 +22,13 @@ const projectsData: Project[] = [
   //   imgSrc: '/static/images/time-machine.jpg',
   //   href: '/blog/the-time-machine',
   // },
+  {
+    title: 'Extractly+',
+    description:
+      'Extractly+ effortlessly streamlines workflows by automating the extraction of data from PDF documents into Excel.',
+    href: 'https://extractly.ai/extractly',
+    imgSrc: '/static/images/extractly+.png',
+  },
 ]
 
 export default projectsData
