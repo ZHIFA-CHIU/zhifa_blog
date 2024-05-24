@@ -1,4 +1,4 @@
-import ProfileCard from '@/components/CustomCard'
+import ProfileCard from '@/components/ProfileCard'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
