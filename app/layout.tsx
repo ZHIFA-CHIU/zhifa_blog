@@ -11,6 +11,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import Alert from '@/components/Alert'
+import { NextUIProvider } from '@nextui-org/react'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -77,16 +78,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white  text-black antialiased dark:bg-gray-950 dark:text-white">
         <Alert />
         <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
-              <Footer />
-            </div>
-          </SectionContainer>
+          <NextUIProvider>
+            <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+            <SectionContainer>
+              <div className="flex h-screen flex-col justify-between font-sans">
+                <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+                  <Header />
+                  <main className="mb-auto">{children}</main>
+                </SearchProvider>
+                <Footer />
+              </div>
+            </SectionContainer>
+          </NextUIProvider>
         </ThemeProviders>
       </body>
     </html>
