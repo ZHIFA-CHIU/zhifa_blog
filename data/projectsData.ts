@@ -29,6 +29,13 @@ const projectsData: Project[] = [
     href: 'https://extractly.ai/extractly',
     imgSrc: '/static/images/extractly+.png',
   },
+  {
+    title: 'Horizontal Investment',
+    description:
+      'Make informed investment, screen, anylyze and track over 9,000 stocks, with 30+ years of data.',
+    href: 'https://www.investmenthorizon.io/',
+    imgSrc: '/static/images/Horizon_Logo_16x9_white.png',
+  },
 ]
 
 export default projectsData

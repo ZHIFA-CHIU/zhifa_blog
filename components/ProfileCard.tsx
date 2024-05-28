@@ -32,7 +32,7 @@ const ProfileCard = () => {
           <p className="text-md font-light">
             I am a full stack developer, specilized in React, Typescript and NextJS.
           </p>
-          <p className="text-md font-light">I shared things I learn from work and my daily life.</p>
+          <p className="text-md font-light">I share things I learn from work and my daily life.</p>
           <p className="text-md font-light">
             I hope you will find the content is intesting and useful.
           </p>

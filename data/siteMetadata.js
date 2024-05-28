@@ -1,15 +1,15 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: "ZhifaQ's Blog",
+  title: "ZhifaQ",
   author: 'ZhifaQ',
-  headerTitle: "ZhifaQ's Blog",
-  description: "ZhifaQ's Blog",
+  headerTitle: "ZhifaQ",
+  description: "ZhifaQ's personal website",
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://zhifaqiu.com',
   siteRepo: 'https://github.com/ZHIFA-CHIU/zhifa_blog',
   siteLogo: '/static/images/zhifalogo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/zhifalogo.png',
   github: 'https://github.com/ZHIFA-CHIU',
   linkedin: 'https://www.linkedin.com/in/zhifa-qiu',
   locale: 'en-US',
