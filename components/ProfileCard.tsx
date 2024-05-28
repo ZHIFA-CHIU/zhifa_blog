@@ -12,6 +12,7 @@ import {
   ModalContent,
   ModalBody,
 } from '@nextui-org/react'
+import Alert from './Alert'
 
 const ProfileCard = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -22,7 +23,7 @@ const ProfileCard = () => {
         <CardHeader className="z-0 flex gap-3">
           <Image alt="zhifaq" height={40} radius="sm" src="/static/images/zhifaq.jpg" width={40} />
           <div className="flex flex-col">
-            <p className="text-md">ZhifaQ 🇨🇳🇦🇺</p>
+            <p className="text-md">ZhifaQ 🕊️🇨🇳🇦🇺</p>
             <p className="text-small text-default-500">Full stack developer</p>
           </div>
         </CardHeader>
