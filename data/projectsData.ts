@@ -30,7 +30,7 @@ const projectsData: Project[] = [
     imgSrc: '/static/images/extractly+.png',
   },
   {
-    title: 'Horizontal Investment',
+    title: 'Investment Horizon',
     description:
       'Make informed investment, screen, anylyze and track over 9,000 stocks, with 30+ years of data.',
     href: 'https://www.investmenthorizon.io/',
