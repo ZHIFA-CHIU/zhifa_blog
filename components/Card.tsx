@@ -1,56 +1,36 @@
-import Image from './Image'
-import Link from './Link'
+import { Button, CardFooter, Card as NextCard, Link, Image, CardHeader } from '@nextui-org/react'
 
 const Card = ({ title, description, imgSrc, href }) => (
   <div className="md max-w-[544px] p-4 md:w-1/2">
-    <div
-      className={`${
-        imgSrc && 'h-full'
-      }  overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
-    >
-      {imgSrc &&
-        (href ? (
-          <Link href={href} aria-label={`Link to ${title}`}>
-            <Image
-              alt={title}
-              src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
-              width={544}
-              height={306}
-              priority={true}
-            />
-          </Link>
-        ) : (
-          <Image
-            alt={title}
-            src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
-            width={544}
-            height={306}
-          />
-        ))}
-      <div className="p-6">
-        <h2 className="mb-3 text-2xl font-bold leading-8 tracking-tight">
-          {href ? (
-            <Link href={href} aria-label={`Link to ${title}`}>
-              {title}
-            </Link>
-          ) : (
-            title
-          )}
-        </h2>
-        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
-        {href && (
-          <Link
-            href={href}
-            className="text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label={`Link to ${title}`}
-          >
-            Learn more &rarr;
-          </Link>
-        )}
-      </div>
-    </div>
+    <NextCard isBlurred isFooterBlurred radius="lg" className="border-none">
+      <CardHeader className="absolute top-1 z-20 flex-col !items-start">
+        <h4 className="text-large font-medium text-black">{title}</h4>
+        <p className="text-tiny font-semibold uppercase text-black">{description}</p>
+      </CardHeader>
+      <Image
+        width={544}
+        height={306}
+        alt={title}
+        className="object-cover"
+        src={imgSrc}
+        removeWrapper
+      />
+      <CardFooter className="absolute bottom-1 z-10  ml-1 flex w-[calc(100%_-_8px)] flex-col justify-between overflow-hidden rounded-large border-1 border-white/20 bg-gray-300/20 py-1 shadow-small before:rounded-xl before:bg-white/10 ">
+        {/* <div className="text-xs font-bold text-black/80">{title}</div>
+        <div className="text-tiny text-black/80"> {description}</div> */}
+        <Button
+          className="bg-black/20 text-tiny text-black"
+          variant="flat"
+          color="default"
+          radius="lg"
+          size="sm"
+          as={Link}
+          href={href}
+        >
+          Learn more &rarr;
+        </Button>
+      </CardFooter>
+    </NextCard>
   </div>
 )
 
