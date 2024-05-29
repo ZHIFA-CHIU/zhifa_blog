@@ -12,14 +12,13 @@ import {
   ModalContent,
   ModalBody,
 } from '@nextui-org/react'
-import Alert from './Alert'
 
 const ProfileCard = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   return (
     <>
-      <Card className="w-full ">
+      <Card className="w-full hover:scale-105">
         <CardHeader className="z-0 flex gap-3">
           <Image alt="zhifaq" height={40} radius="sm" src="/static/images/zhifaq.jpg" width={40} />
           <div className="flex flex-col">
