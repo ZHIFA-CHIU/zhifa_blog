@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
   title: string
   description: string
   href?: string
@@ -32,7 +32,7 @@ const projectsData: Project[] = [
   {
     title: 'Investment Horizon',
     description:
-      'Make informed investment, screen, anylyze and track over 9,000 stocks, with 30+ years of data.',
+      'Next generation investment analysis. Gain insights, track trends, and optimize your investment to grow your wealth.',
     href: 'https://www.investmenthorizon.io/',
     imgSrc: '/static/images/Horizon_Logo_16x9_white.png',
   },
