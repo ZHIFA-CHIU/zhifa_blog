@@ -22,8 +22,32 @@ const ProfileCard = () => {
         <CardHeader className="z-0 flex gap-3">
           <Image alt="zhifaq" height={40} radius="sm" src="/static/images/zhifaq.jpg" width={40} />
           <div className="flex flex-col">
-            <p className="text-md">ZhifaQ 🕊️🇨🇳🇦🇺</p>
-            <p className="text-small text-default-500">Full stack developer</p>
+            <div>
+              <p className="text-md">ZhifaQ 🕊️🇨🇳🇦🇺</p>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span>
+                <p className="text-small text-default-500">Full stack developer</p>
+              </span>
+              <span>
+                <Link
+                  href="https://www.linkedin.com/company/auxilis-technology/mycompany/"
+                  isExternal={true}
+                  className="cursor-pointer text-small text-default-500 hover:scale-105"
+                >
+                  @Auxilis
+                </Link>
+              </span>
+              <span>
+                <Link
+                  href="https://www.linkedin.com/company/extractly-ai/"
+                  isExternal={true}
+                  className="cursor-pointer text-small text-default-500 hover:scale-105"
+                >
+                  @extractly.ai
+                </Link>
+              </span>
+            </div>
           </div>
         </CardHeader>
         <Divider />
