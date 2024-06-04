@@ -11,10 +11,15 @@ import {
   Modal,
   ModalContent,
   ModalBody,
+  Tabs,
+  Tab,
 } from '@nextui-org/react'
+import Testimonials from './Testimonials'
+import { useState } from 'react'
 
 const ProfileCard = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const [openTestimonials, setOpenTestimonials] = useState(false)
 
   return (
     <>
@@ -23,12 +28,9 @@ const ProfileCard = () => {
           <Image alt="zhifaq" height={40} radius="sm" src="/static/images/zhifaq.jpg" width={40} />
           <div className="flex flex-col">
             <div>
-              <p className="text-md">ZhifaQ 🕊️🇨🇳🇦🇺</p>
+              <p className="text-md">ZhifaQ 🕊️</p>
             </div>
             <div className="flex items-center space-x-2">
-              <span>
-                <p className="text-small text-default-500">Full stack developer</p>
-              </span>
               <span>
                 <Link
                   href="https://www.linkedin.com/company/auxilis-technology/mycompany/"
@@ -52,22 +54,42 @@ const ProfileCard = () => {
         </CardHeader>
         <Divider />
         <CardBody>
-          <p className="text-2xl font-semibold">Welcome to ZhifaQ's personal website</p>
-          <p className="text-md font-light">
-            I am a full stack developer, specilized in React, Typescript and NextJS.
-          </p>
-          <p className="text-md font-light">I share things I learn from work and my daily life.</p>
-          <p className="text-md font-light">
-            I hope you will find the content is intesting and useful.
-          </p>
-          <p className="text-md font-light">Cheers!</p>
+          <ul className="ml-3 list-disc">
+            <li>Full stack developer</li>
+            <li>React, NextJS, Vite, Typescript, NodeJS, ExpressJS</li>
+            <li>
+              <Link
+                href="https://www.credly.com/badges/fc8fb021-35a2-402e-bac7-77f4abbd06e2/linked_in_profile"
+                isExternal
+                showAnchorIcon
+              >
+                AWS Certified Solutions Architect - Associate
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.credly.com/badges/3dc6736d-02ad-4abf-89de-0616f95f6be2/linked_in_profile"
+                isExternal
+                showAnchorIcon
+              >
+                AWS Certified Cloud Practitioner
+              </Link>
+            </li>
+            <li>Wollongong Australia</li>
+          </ul>
         </CardBody>
         <Divider />
         <CardFooter className="flex justify-between">
-          <Link showAnchorIcon href="/about">
-            Find out more about me
-          </Link>
-          <button onClick={onOpen} className="hover:text-gray-500 dark:hover:text-gray-300">
+          <button
+            onClick={() => setOpenTestimonials(true)}
+            className="transition delay-75 ease-in-out hover:scale-105 hover:text-gray-500 dark:hover:text-gray-300"
+          >
+            Testimonials
+          </button>
+          <button
+            onClick={onOpen}
+            className="transition delay-75 ease-in-out hover:scale-105 hover:text-gray-500 dark:hover:text-gray-300"
+          >
             Buy me a ☕
           </button>
         </CardFooter>
@@ -75,15 +97,31 @@ const ProfileCard = () => {
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center" size="md">
         <ModalContent>
           <ModalBody>
-            <Image
-              isBlurred
-              src="/static/images/qrcode.png"
-              alt="Paypal QR Code"
-              className="w-full p-8"
-            />
+            <Tabs aria-label="Options" className="justify-center">
+              <Tab key={'paypal'} title="Paypal">
+                <Image
+                  isBlurred
+                  src="/static/images/qrcode.png"
+                  alt="Paypal QR Code"
+                  className="w-full p-8"
+                />
+              </Tab>
+              <Tab key={'wechat'} title="Wechat">
+                <Image
+                  isBlurred
+                  src="/static/images/wechat.JPG"
+                  alt="Paypal QR Code"
+                  className="w-full p-8"
+                />
+              </Tab>
+            </Tabs>
           </ModalBody>
         </ModalContent>
       </Modal>
+      <Testimonials
+        isOpen={openTestimonials}
+        onOpenChange={() => setOpenTestimonials(!openTestimonials)}
+      />
     </>
   )
 }
