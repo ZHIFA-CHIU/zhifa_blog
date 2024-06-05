@@ -13,17 +13,15 @@ import {
   ModalBody,
   Tabs,
   Tab,
+  Button,
 } from '@nextui-org/react'
-import Testimonials from './Testimonials'
-import { useState } from 'react'
 
 const ProfileCard = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const [openTestimonials, setOpenTestimonials] = useState(false)
 
   return (
     <>
-      <Card className="w-full hover:scale-105">
+      <Card className="w-full">
         <CardHeader className="z-0 flex gap-3">
           <Image alt="zhifaq" height={40} radius="sm" src="/static/images/zhifaq.jpg" width={40} />
           <div className="flex flex-col">
@@ -80,18 +78,30 @@ const ProfileCard = () => {
         </CardBody>
         <Divider />
         <CardFooter className="flex justify-between">
-          <button
+          {/* <button
             onClick={() => setOpenTestimonials(true)}
             className="transition delay-75 ease-in-out hover:scale-105 hover:text-gray-500 dark:hover:text-gray-300"
           >
             Testimonials
-          </button>
-          <button
+          </button> */}
+          <Button
+            href="/gallery"
+            as={Link}
+            showAnchorIcon
+            variant="solid"
+            size="sm"
+            className="bg-gray-100 dark:bg-gray-600/50"
+          >
+            Find out more about me
+          </Button>
+          <Button
             onClick={onOpen}
-            className="transition delay-75 ease-in-out hover:scale-105 hover:text-gray-500 dark:hover:text-gray-300"
+            variant="solid"
+            size="sm"
+            className="bg-gray-100 dark:bg-gray-600/50"
           >
             Buy me a ☕
-          </button>
+          </Button>
         </CardFooter>
       </Card>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center" size="md">
@@ -103,7 +113,7 @@ const ProfileCard = () => {
                   isBlurred
                   src="/static/images/qrcode.png"
                   alt="Paypal QR Code"
-                  className="w-full p-8"
+                  className="max-h-[500px] min-h-[500px] w-full object-scale-down p-8"
                 />
               </Tab>
               <Tab key={'wechat'} title="Wechat">
@@ -111,17 +121,13 @@ const ProfileCard = () => {
                   isBlurred
                   src="/static/images/wechat.JPG"
                   alt="Paypal QR Code"
-                  className="w-full p-8"
+                  className="max-h-[500px] min-h-[500px] w-full object-scale-down p-8"
                 />
               </Tab>
             </Tabs>
           </ModalBody>
         </ModalContent>
       </Modal>
-      <Testimonials
-        isOpen={openTestimonials}
-        onOpenChange={() => setOpenTestimonials(!openTestimonials)}
-      />
     </>
   )
 }

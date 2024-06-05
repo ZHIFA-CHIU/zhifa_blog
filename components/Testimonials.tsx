@@ -35,7 +35,7 @@ const Testimonials = ({ isOpen, onOpenChange }: Props) => {
           <ModalHeader>Testimonials</ModalHeader>
           <Divider />
           <ModalBody>
-            <div className="flex flex-col gap-4 p-2">
+            <div className="flex h-full flex-col gap-4 overflow-y-auto p-2">
               {testimonials.map((testimonial) => (
                 <TestimonialsCard
                   key={testimonial.author}
