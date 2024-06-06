@@ -17,4 +17,10 @@ export const testimonials: Testimonial[] = [
     href: 'https://www.linkedin.com/in/parijatictproductstrategist/',
     img: '/static/images/Parijat_Kinshuk.jpeg',
   },
+  {
+    content: `I recently had the pleasure of working with Zhifa in a number of projects in Auxilis. Zhifa is a super talented Self motivated professional who loves a challenge, is a fast learner and very resourceful. I love brainstorming ideas with Zhifa as he always comes up with a much more modern (funky ) approach than I can. As a software developer, he delivers his work in half the time compared to his colleagues and delivers a better quality product.I hope to be able to work with Zhifa for all my future projects.`,
+    author: 'Annie Chong',
+    href: 'https://www.linkedin.com/in/annie-chong-ba40013/',
+    img: '/static/images/Annie_Chong.jpeg',
+  },
 ]

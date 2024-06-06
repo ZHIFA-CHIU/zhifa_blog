@@ -85,7 +85,7 @@ const ProfileCard = () => {
             Testimonials
           </button> */}
           <Button
-            href="/gallery"
+            href="#"
             as={Link}
             showAnchorIcon
             variant="solid"
