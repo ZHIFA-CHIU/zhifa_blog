@@ -1,0 +1,46 @@
+---
+title: Climbing Stairs
+date: '2024-07-08'
+tags: ['Leetcode', 'Dynamic Programming']
+draft: false
+summary: 'You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?'
+---
+
+[Read question here](https://leetcode.com/problems/climbing-stairs/description/)
+
+## Solution 1
+
+```typescript
+// DFS + Memoization
+function climbStairs(n: number): number {
+  const dp = new Map<number, number>() // create a dp cache
+
+  const helper = (idx: number): number => {
+    if (idx === n) return 1 // if reach to goal, return an option
+    if (idx > n) return 0 // if go beyond goal, return 0
+
+    if (dp.has(idx)) return dp.get(idx)! // if current index has been cached, return cache
+
+    const result = helper(idx + 1) + helper(idx + 2) // solution in curent index = result(take one step) + result(take two steps)
+    dp.set(idx, result) // cache the result
+    return result // return the result
+  }
+
+  return helper(0)
+}
+```
+
+## Solution 2
+
+```typescript
+// Dynamic Programming (bottom-up)
+function climbStairs(n: number): number {
+  const dp = new Array(n + 1) // create an dp array
+  dp[n] = 1 // reach the goal, set value to 1
+  dp[n - 1] = 1 // 1 step to the goal, so set value to 1
+
+  for (let i = n - 2; i >= 0; i--) dp[i] = dp[i + 1] + dp[i + 2] // solution in curent index = result(take one step) + result(take two steps)
+
+  return dp[0]
+}
+```
