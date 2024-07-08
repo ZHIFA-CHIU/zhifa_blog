@@ -1,0 +1,46 @@
+---
+title: Min Cost Climbing Stairs
+date: '2024-07-08'
+tags: ['Leetcode', 'Dynamic Programming']
+draft: false
+summary: 'You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or two steps. You can either start from the step with index 0, or the step with index 1. Return the minimum cost to reach the top of the floor.'
+---
+
+[Read question here](https://leetcode.com/problems/min-cost-climbing-stairs/description/)
+
+## Solution 1
+
+```typescript
+// DFS + Memoization
+const minCostClimbingStairs = (cost: number[]): number => {
+  const dp = new Map<number, number>() // cache
+
+  const helper = (idx: number): number => {
+    if (idx >= cost.length) return 0 // if the idx goes beyond the cost array, return 0 as it reaches the top
+
+    if (dp.has(idx)) return dp.get(idx)! // if the min cost at given index has been cached, return the cache
+
+    const minCost = cost[idx] + Math.min(helper(idx + 1), helper(idx + 2)) // get the min cost, minCost = cost at current index + Math.min(minCost one step away, minCost two steps away)
+    dp.set(idx, minCost) // cache the min cost
+    return minCost
+  }
+
+  return Math.min(helper(0), helper(1))
+}
+```
+
+## Solution 2
+
+```typescript
+// Dynamic Programming (bottom up)
+function minCostClimbingStairs(cost: number[]): number {
+  const len = cost.length
+  const dp = new Array(len + 1) // create dp array
+  dp[len] = 0 // base case, goal position, cost is 0
+  dp[len - 1] = cost[len - 1] // one step to goal
+
+  for (let i = len - 2; i >= 0; i--) dp[i] = cost[i] + Math.min(dp[i + 1], dp[i + 2]) // // get the min cost at index i, minCost = cost at current index + Math.min(minCost one step away, minCost two steps away)
+
+  return Math.min(dp[0], dp[1])
+}
+```
