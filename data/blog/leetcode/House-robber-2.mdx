@@ -1,0 +1,65 @@
+---
+title: House Robber II
+date: '2024-07-23'
+tags: ['Leetcode', 'Dynamic Programming']
+draft: false
+summary: 'You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.'
+---
+
+[Read the question here](https://leetcode.com/problems/house-robber-ii/description/)
+
+```typescript
+/**
+ * Because houses are arranged in a circle
+ * If we rob the first house, then we can't rob the last house
+ * If we rob the last house, then we can't rob the first house
+ * Run house robber algorithm on arr[0, -1] and on arr[1, arr.length] 
+ * return the max value
+ */
+
+ function rob(nums: number[]): number {
+    if (nums.length === 1) return nums[0]
+    const usedFirst = helper(nums, 0, nums.length - 1)
+    const notUsedFirst = helper(nums, 1, nums.length)
+    return Math.max(usedFirst, notUsedFirst)
+};
+
+const helper = (nums: number[], start: number, end: number) => {
+    const map = new Map<string, number>()
+
+    const inner = (idx: number, amount: number) => {
+        if (idx >= end) return amount
+        const key = `${idx}::${amount}`
+        if (map.has(key)) return map.get(key)!
+
+        const take = inner(idx + 2, amount + nums[idx])
+        const notTake = inner(idx + 1, amount)
+        const max = Math.max(take, notTake)
+        map.set(key, max)
+        return max
+    }
+
+    return inner(start, 0)
+}
+/*******************************************************************/
+const rob = (nums: number[]): number => {
+    if (nums.length === 1) return nums[0]
+    const usedFirst = helper(nums, 0, nums.length - 1)
+    const notUsedFirst = helper(nums, 1, nums.length)
+    return Math.max(usedFirst, notUsedFirst)
+}
+
+const helper = (nums: number[], start: number, end: number) => {
+    const dp: number[] = new Array(end - start).fill(0)
+
+    let prev = 0
+    let prevPrev = 0
+
+    for (let i = 0; i < dp.length; i++) {
+        dp[i] = Math.max(prevPrev + nums[i + start], prev)
+        prevPrev = prev
+        prev = dp[i]
+    }
+    return dp.at(-1)
+}
+```
