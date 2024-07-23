@@ -1,0 +1,49 @@
+---
+title: House Robber
+date: '2024-07-23'
+tags: ['Leetcode', 'Dynamic Programming']
+draft: false
+summary: 'You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.'
+---
+
+[Read the question here](https://leetcode.com/problems/house-robber/description/)
+
+```typescript
+/**
+ * Problem: Return the maximum amount of money you can rob tonight without alerting the police.
+ * Sub-problem: The maximum amout of money you can rob so far when visiting a house
+ * max[i] = Math.max(prev, prevPrev + nums[i])
+ */
+
+ // DFS + Memo
+function rob(nums: number[]): number {
+    const map = new Map<string, number>()
+
+    const helper = (idx: number, amount: number) => {
+        if (idx >= nums.length) return amount
+
+        const key = `${idx}::${amount}`
+        if (map.has(key)) return map.get(key)!
+
+        const takeCurrent = helper(idx + 2, amount + nums[idx])
+        const notTake = helper(idx + 1, amount)
+        const max = Math.max(takeCurrent, notTake)
+        map.set(key, max)
+        return max
+    }
+
+    return helper(0, 0)
+};
+
+// DP
+const rob = (nums: number[]): number => {
+    const dp = new Array(nums.length)
+    let prev = 0, prevPrev = 0
+    for (let i = 0; i < dp.length; i++) {
+        dp[i] = Math.max(prevPrev + nums[i], prev)
+        prevPrev = prev
+        prev = dp[i]
+    }
+    return dp.at(-1)
+} 
+```
