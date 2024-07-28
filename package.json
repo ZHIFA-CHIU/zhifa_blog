@@ -20,6 +20,7 @@
     "@tailwindcss/typography": "^0.5.12",
     "autoprefixer": "^10.4.13",
     "contentlayer2": "0.4.6",
+    "downloadjs": "^1.4.7",
     "esbuild": "0.20.2",
     "framer-motion": "^11.2.6",
     "github-slugger": "^2.0.0",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
+    "@types/downloadjs": "^1.4.6",
     "@types/mdx": "^2.0.12",
     "@types/react": "^18.2.73",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
