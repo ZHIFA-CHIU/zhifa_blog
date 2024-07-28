@@ -53,7 +53,7 @@ const ProfileCard = () => {
         <Divider />
         <CardBody>
           <ul className="ml-3 list-disc">
-            <li>Full stack developer</li>
+            <li>Software Engineer</li>
             <li>React, NextJS, Vite, Typescript, NodeJS, ExpressJS</li>
             <li>
               <Link
